@@ -9,11 +9,15 @@ import { swrLocalStorageProvider } from "@/shared/infrastructure/cache";
 import "virtual:uno.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <SWRConfig value={{ provider: swrLocalStorageProvider }}>
-      <RecoilRoot>
+  <SWRConfig value={{ provider: swrLocalStorageProvider }}>
+    <RecoilRoot>
+      {/*
+       * We're not putting React.StrictMode on the top level due to a bug in Recoil
+       * https://github.com/facebookexperimental/Recoil/issues/2083
+       */}
+      <React.StrictMode>
         <Routing />
-      </RecoilRoot>
-    </SWRConfig>
-  </React.StrictMode>
+      </React.StrictMode>
+    </RecoilRoot>
+  </SWRConfig>
 );
