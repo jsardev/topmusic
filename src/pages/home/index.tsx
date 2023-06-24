@@ -1,9 +1,21 @@
+import AlbumList from "@/modules/album/ui/AlbumList";
+import { useTopAlbums } from "@/modules/album/model";
+import Layout from "@/shared/ui/Layout";
+import withSuspense from "@/shared/utils/withSuspense";
+
 const HomePage = () => {
+  const { albums } = useTopAlbums();
+
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
-      <h1>Hello World</h1>
-    </div>
+    <Layout>
+      <AlbumList items={albums} />
+    </Layout>
   );
 };
 
-export default HomePage;
+const EnhancedHomePage = withSuspense(
+  HomePage,
+  <Layout>Loading data...</Layout>
+);
+
+export default EnhancedHomePage;
