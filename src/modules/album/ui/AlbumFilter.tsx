@@ -1,5 +1,5 @@
 import Input from "@/shared/ui/Input";
-import { useAlbumsFilter } from "../state/hooks";
+import { useAlbumsFilter } from "../model";
 
 const AlbumFilter = () => {
   const { albumsFilter, setAlbumsFilter } = useAlbumsFilter();

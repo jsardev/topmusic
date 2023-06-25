@@ -1,13 +1,13 @@
 import { atom, selector, selectorFamily } from "recoil";
 
-import { Album, FavoritedAlbum } from "../model";
+import { Album, FavoriteAlbum } from "../model";
 import {
   favoriteAlbumsRepository,
   topAlbumsRepository,
+  TopAlbumsRepositoryFilters,
+  favoriteAlbumsLocalForageSyncEffect,
 } from "../infrastructure";
-import { TopAlbumsRepositoryFilters } from "../infrastructure/types";
-import { albumFuse, mergeAlbumsWithFavoriteAlbums } from "./utils";
-import { favoriteAlbumsLocalForageSyncEffect } from "./effects";
+import { mergeAlbumsWithFavoriteAlbums, searchAlbums } from "./utils";
 
 export const albumsState = atom<Album[]>({
   key: "albumsState",
@@ -29,7 +29,7 @@ export const favoriteAlbumsQuery = selector({
   get: ({ get }) => {
     const albums = get(albumsState);
     return albums
-      .filter((album): album is FavoritedAlbum => album.isFavorite)
+      .filter((album): album is FavoriteAlbum => album.isFavorite)
       .sort((a, b) => b.addedToFavoritesAt - a.addedToFavoritesAt);
   },
 });
@@ -51,13 +51,10 @@ export const filteredAlbumsQuery = selectorFamily({
       const albums = get(albumsState);
       const albumsFilter = get(albumsFilterState);
       const favoriteAlbums = get(favoriteAlbumsQuery);
-
       const albumsToFilter = showOnlyFavorites ? favoriteAlbums : albums;
 
       if (albumsFilter) {
-        albumFuse.setCollection(albumsToFilter);
-        const searchResult = albumFuse.search(albumsFilter);
-        return Array.from(new Set(searchResult.map(({ item }) => item)));
+        return searchAlbums(albumsToFilter, albumsFilter);
       }
 
       return albumsToFilter;

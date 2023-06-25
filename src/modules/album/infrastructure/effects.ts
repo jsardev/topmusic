@@ -1,5 +1,5 @@
-import { localForageOneWaySyncEffect } from "@/shared/state/effects";
-import { FAVORITE_ALBUMS_STORAGE_KEY } from "../infrastructure";
+import { localForageOneWaySyncEffect } from "@/shared/infrastructure";
+import { FAVORITE_ALBUMS_STORAGE_KEY } from "./storage";
 import { Album } from "../model";
 
 export const favoriteAlbumsLocalForageSyncEffect = localForageOneWaySyncEffect<

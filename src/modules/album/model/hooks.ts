@@ -7,7 +7,7 @@ import {
   albumsState,
   filteredAlbumsQuery,
   albumsFilterState,
-} from "./index";
+} from "./state";
 
 const DEFAULT_TOP_ALBUMS_LIMIT = 100;
 
