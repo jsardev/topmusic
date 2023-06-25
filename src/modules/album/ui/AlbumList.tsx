@@ -1,5 +1,5 @@
 import List from "@/shared/ui/List";
-import { useTopAlbums } from "../model";
+import { useTopAlbums } from "../state/hooks";
 import AlbumListRow from "./AlbumListRow";
 
 interface AlbumListProps {

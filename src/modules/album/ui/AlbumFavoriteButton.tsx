@@ -1,4 +1,5 @@
-import { Album, useToggleAlbumIsFavorite } from "../model";
+import { Album } from "../model";
+import { useToggleAlbumIsFavorite } from "../state/hooks";
 
 type AlbumListRowProps = {
   album: Album;

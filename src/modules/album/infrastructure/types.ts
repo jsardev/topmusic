@@ -3,9 +3,9 @@ import {
   iTunesRSSEntryLabelAndAttributesValue,
   iTunesRSSEntryLabelValue,
 } from "@/shared/infrastructure";
-import { AlbumWithoutMethods } from "../model";
+import { AlbumDTO } from "../model";
 
-export type FavoriteAlbumDTO = AlbumWithoutMethods;
+export type FavoriteAlbumDTO = AlbumDTO;
 
 export interface RSSAlbumDTO {
   id: iTunesRSSEntryAttributesValue<{
