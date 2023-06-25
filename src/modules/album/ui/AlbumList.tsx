@@ -2,8 +2,12 @@ import List from "@/shared/ui/List";
 import { useTopAlbums } from "../model";
 import AlbumListRow from "./AlbumListRow";
 
-const AlbumList = () => {
-  const { albums } = useTopAlbums();
+interface AlbumListProps {
+  showOnlyFavorites?: boolean;
+}
+
+const AlbumList = ({ showOnlyFavorites = false }: AlbumListProps) => {
+  const { albums } = useTopAlbums({ showOnlyFavorites });
 
   return (
     <List className="h-1/2 overflow-scroll">

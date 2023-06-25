@@ -4,7 +4,7 @@ import {
   albumsFilterState,
   albumsQuery,
   albumsState,
-  filteredAlbumsState,
+  filteredAlbumsQuery,
 } from "../state";
 import { replaceItemAtIndex } from "@/shared/utils/array";
 
@@ -32,11 +32,20 @@ export class Album {
 
 const DEFAULT_TOP_ALBUMS_LIMIT = 100;
 
-export const useTopAlbums = (limit: number = DEFAULT_TOP_ALBUMS_LIMIT) => {
+interface UseTopAlbumsOptions {
+  limit?: number;
+  showOnlyFavorites?: boolean;
+}
+
+export const useTopAlbums = ({
+  limit = DEFAULT_TOP_ALBUMS_LIMIT,
+  showOnlyFavorites = false,
+}: UseTopAlbumsOptions) => {
   const albumsQueryValue = useRecoilValue(albumsQuery({ limit }));
   const [albums, setAlbums] = useRecoilState(albumsState);
-  const albumsFilter = useRecoilValue(albumsFilterState);
-  const filteredAlbums = useRecoilValue(filteredAlbumsState);
+  const filteredAlbums = useRecoilValue(
+    filteredAlbumsQuery({ showOnlyFavorites })
+  );
 
   useEffect(() => {
     if (!albums.length) {
@@ -45,7 +54,7 @@ export const useTopAlbums = (limit: number = DEFAULT_TOP_ALBUMS_LIMIT) => {
   }, [albums.length, albumsQueryValue, setAlbums]);
 
   return {
-    albums: albumsFilter.length > 0 ? filteredAlbums : albums,
+    albums: filteredAlbums,
   };
 };
 

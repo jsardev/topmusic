@@ -2,13 +2,13 @@ import AlbumFilter from "@/modules/album/ui/AlbumFilter";
 import AlbumList from "@/modules/album/ui/AlbumList";
 import Layout from "@/shared/ui/Layout";
 
-const HomePage = () => {
+const FavoritesPage = () => {
   return (
     <Layout>
       <AlbumFilter />
-      <AlbumList />
+      <AlbumList showOnlyFavorites />
     </Layout>
   );
 };
 
-export default HomePage;
+export default FavoritesPage;

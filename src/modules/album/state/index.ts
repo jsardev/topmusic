@@ -37,19 +37,27 @@ export const albumsFilterState = atom<string>({
   default: "",
 });
 
-export const filteredAlbumsState = selector({
+interface FilteredAlbumsQueryOptions {
+  showOnlyFavorites: boolean;
+}
+
+export const filteredAlbumsQuery = selectorFamily({
   key: "filteredAlbumsState",
-  get: ({ get }) => {
-    const albums = get(albumsState);
-    const albumsFilter = get(albumsFilterState);
-    const favoriteAlbums = get(favoriteAlbumsQuery);
-    // TODO: Sync Recoil with url state
-    const isFavoritesRouteActive = false;
+  get:
+    ({ showOnlyFavorites }: Readonly<FilteredAlbumsQueryOptions>) =>
+    ({ get }) => {
+      const albums = get(albumsState);
+      const albumsFilter = get(albumsFilterState);
+      const favoriteAlbums = get(favoriteAlbumsQuery);
 
-    const albumsToFilter = isFavoritesRouteActive ? favoriteAlbums : albums;
-    albumFuse.setCollection(albumsToFilter);
-    const searchResult = albumFuse.search(albumsFilter);
+      const albumsToFilter = showOnlyFavorites ? favoriteAlbums : albums;
 
-    return Array.from(new Set(searchResult.map(({ item }) => item)));
-  },
+      if (albumsFilter) {
+        albumFuse.setCollection(albumsToFilter);
+        const searchResult = albumFuse.search(albumsFilter);
+        return Array.from(new Set(searchResult.map(({ item }) => item)));
+      }
+
+      return albumsToFilter;
+    },
 });
