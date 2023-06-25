@@ -8,27 +8,54 @@ import {
 } from "../state";
 import { replaceItemAtIndex } from "@/shared/utils/array";
 
+type AlbumNonMethodKeys =
+  | "id"
+  | "artist"
+  | "isFavorite"
+  | "addedToFavoritesAt"
+  | "exclude";
+
+export type AlbumWithoutMethods = Pick<Album, AlbumNonMethodKeys>;
+
 export class Album {
   id: string;
   artist: string;
   isFavorite: boolean;
+  addedToFavoritesAt?: number;
   exclude: boolean;
 
-  constructor(id: string, artist: string, isFavorite = false, exclude = false) {
+  constructor({
+    id,
+    artist,
+    isFavorite,
+    addedToFavoritesAt,
+    exclude,
+  }: AlbumWithoutMethods) {
     this.id = id;
     this.artist = artist;
     this.isFavorite = isFavorite;
+    this.addedToFavoritesAt =
+      addedToFavoritesAt ?? this.computeAddedToFavoritesAt(isFavorite);
     this.exclude = exclude;
   }
 
-  setIsFavorite(value: boolean) {
-    this.isFavorite = value;
+  setIsFavorite(isFavorite: boolean, addedToFavoritesAt?: number) {
+    this.isFavorite = isFavorite;
+    this.addedToFavoritesAt =
+      addedToFavoritesAt ?? this.computeAddedToFavoritesAt(isFavorite);
   }
 
-  setExclude(value: boolean) {
-    this.exclude = value;
+  setExclude(exclude: boolean) {
+    this.exclude = exclude;
+  }
+
+  private computeAddedToFavoritesAt(isFavorite: boolean) {
+    return isFavorite === true ? Date.now() : undefined;
   }
 }
+
+export type FavoritedAlbum = Album &
+  Required<Pick<Album, "addedToFavoritesAt">>;
 
 const DEFAULT_TOP_ALBUMS_LIMIT = 100;
 
@@ -73,7 +100,10 @@ export const useToggleAlbumIsFavorite = (album: Album) => {
   return () => {
     setAlbums((albums) => {
       const albumIndex = albums.findIndex((albumItem) => albumItem === album);
-      const updatedAlbum = new Album(album.id, album.artist, !album.isFavorite);
+      const updatedAlbum = new Album({
+        ...album,
+        isFavorite: !album.isFavorite,
+      });
       return replaceItemAtIndex<Album>(albums, albumIndex, updatedAlbum);
     });
   };

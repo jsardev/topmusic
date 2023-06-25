@@ -1,6 +1,6 @@
 import { atom, selector, selectorFamily } from "recoil";
 
-import { Album } from "../model";
+import { Album, FavoritedAlbum } from "../model";
 import {
   favoriteAlbumsRepository,
   topAlbumsRepository,
@@ -28,7 +28,9 @@ export const favoriteAlbumsQuery = selector({
   key: "favoriteAlbumsState",
   get: ({ get }) => {
     const albums = get(albumsState);
-    return albums.filter((album) => album.isFavorite);
+    return albums
+      .filter((album): album is FavoritedAlbum => album.isFavorite)
+      .sort((a, b) => b.addedToFavoritesAt - a.addedToFavoritesAt);
   },
 });
 

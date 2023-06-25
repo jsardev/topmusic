@@ -15,7 +15,7 @@ export const mergeAlbumsWithFavoriteAlbums = (
   for (const favoriteAlbum of favoriteAlbums) {
     const existingAlbum = result.find((album) => album.id == favoriteAlbum.id);
     if (existingAlbum) {
-      existingAlbum.setIsFavorite(true);
+      existingAlbum.setIsFavorite(true, favoriteAlbum.addedToFavoritesAt);
     } else {
       favoriteAlbum.setExclude(true);
       result.push(favoriteAlbum);
