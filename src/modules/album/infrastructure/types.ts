@@ -5,11 +5,9 @@ import {
 } from "@/shared/infrastructure";
 import { Album } from "../model";
 
-export interface AlbumRepository {
-  getTopAlbums: (limit: number) => Promise<Album[]>;
-}
+export type FavoriteAlbumDTO = Omit<Album, "setIsFavorite" | "setExclude">;
 
-export interface AlbumDTO {
+export interface RSSAlbumDTO {
   id: iTunesRSSEntryAttributesValue<{
     "im:id": string;
   }>;
@@ -32,8 +30,12 @@ export interface AlbumDTO {
   >;
 }
 
-export interface TopAlbumsResponseDTO {
+export interface RSSTopAlbumsResponseDTO {
   feed: {
-    entry: AlbumDTO[];
+    entry: RSSAlbumDTO[];
   };
+}
+
+export interface TopAlbumsRepositoryFilters {
+  limit: number;
 }

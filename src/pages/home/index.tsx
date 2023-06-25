@@ -1,25 +1,20 @@
+import AlbumFilter from "@/modules/album/ui/AlbumFilter";
 import AlbumList from "@/modules/album/ui/AlbumList";
-import { useTopAlbums } from "@/modules/album/model";
 import Layout from "@/shared/ui/Layout";
-import withSuspense from "@/shared/utils/withSuspense";
-import Input from "@/shared/ui/Input";
+import LayoutLoading from "@/shared/ui/LayoutLoading";
+import React from "react";
 
 const HomePage = () => {
-  const { albums, albumsFilter, setAlbumsFilter } = useTopAlbums();
-
   return (
-    <Layout>
-      <div className="flex flex-col">
-        <Input value={albumsFilter} onChange={setAlbumsFilter} />
-        <AlbumList items={albums} />
-      </div>
-    </Layout>
+    <React.Suspense fallback={<LayoutLoading>Loading data...</LayoutLoading>}>
+      <Layout>
+        <div className="flex flex-col h-full">
+          <AlbumFilter />
+          <AlbumList />
+        </div>
+      </Layout>
+    </React.Suspense>
   );
 };
 
-const EnhancedHomePage = withSuspense(
-  HomePage,
-  <Layout>Loading data...</Layout>
-);
-
-export default EnhancedHomePage;
+export default HomePage;

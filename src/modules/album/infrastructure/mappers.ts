@@ -1,9 +1,15 @@
 import { Album } from "../model";
-import { AlbumDTO } from "./types";
+import { FavoriteAlbumDTO, RSSAlbumDTO } from "./types";
 
-export const mapAlbumDTOToAlbum = (albumDTO: AlbumDTO): Album => {
-  return {
-    id: albumDTO.id.attributes["im:id"],
-    artist: albumDTO["im:artist"].label,
-  };
+export const mapRSSAlbumDTOToAlbum = (rssAlbumDTO: RSSAlbumDTO): Album => {
+  return new Album(
+    rssAlbumDTO.id.attributes["im:id"],
+    rssAlbumDTO["im:artist"].label
+  );
+};
+
+export const mapFavoriteAlbumDTOTOAlbum = (
+  favoriteAlbumDTO: FavoriteAlbumDTO
+): Album => {
+  return new Album(favoriteAlbumDTO.id, favoriteAlbumDTO.artist);
 };

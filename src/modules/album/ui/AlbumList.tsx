@@ -1,12 +1,16 @@
-import { Album } from "../model";
+import List from "@/shared/ui/List";
+import { useTopAlbums } from "../model";
+import AlbumListRow from "./AlbumListRow";
 
-const AlbumList = ({ items = [] }: { items: Album[] }) => {
+const AlbumList = () => {
+  const { albums } = useTopAlbums();
+
   return (
-    <ul>
-      {items.map((album) => (
-        <li key={album.id}>{album.artist}</li>
+    <List className="h-1/2 overflow-scroll">
+      {albums.map((album) => (
+        <AlbumListRow key={album.id} album={album} />
       ))}
-    </ul>
+    </List>
   );
 };
 
