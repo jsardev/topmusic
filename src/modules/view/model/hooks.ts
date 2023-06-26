@@ -16,8 +16,6 @@ export const useFilter = () => {
 export const useActiveRoutes = () => {
   const location = useLocation();
 
-  console.log(location.pathname);
-
   return {
     home: location.pathname == "/",
     favorites: location.pathname.includes("/favorites"),

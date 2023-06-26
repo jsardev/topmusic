@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 
 type AlbumListItemProps = {
   album: Album;
-  position: number;
+  showPosition?: boolean;
 };
 
-const AlbumListItem = ({ album, position }: AlbumListItemProps) => {
+const AlbumListItem = ({ album, showPosition = true }: AlbumListItemProps) => {
   return (
     <ListRow className="flex items-center relative">
       <Link to={`/details/${album.id}`} className="w-full md:w-720px">
@@ -45,13 +45,18 @@ const AlbumListItem = ({ album, position }: AlbumListItemProps) => {
         </div>
       </Link>
 
-      <Text
-        type="display/xl/semibold"
-        className="absolute leading-none left-12 top-12 md:w-150px md:-left-198px color-gray-100 text-right"
-      >
-        {position}.
-      </Text>
-      <AlbumFavoriteButton album={album} className="absolute right-0 bottom-0 md:-right-48px md:bottom-auto" />
+      {showPosition && (
+        <Text
+          type="display/xl/semibold"
+          className="absolute leading-none left-12 top-12 md:w-150px md:-left-198px color-gray-100 text-right opacity-50 md:opacity-100"
+        >
+          {album.position}.
+        </Text>
+      )}
+      <AlbumFavoriteButton
+        album={album}
+        className="absolute right-0 bottom-0 md:-right-48px md:bottom-auto"
+      />
     </ListRow>
   );
 };

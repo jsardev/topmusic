@@ -1,10 +1,10 @@
-import AlbumList from "@/modules/album/ui/AlbumList";
+import Albums from "@/modules/album/ui/Albums";
 import Layout from "@/shared/ui/Layout";
 
 const HomePage = () => {
   return (
     <Layout title="Top Albums" withViewToolbar>
-      <AlbumList />
+      <Albums />
     </Layout>
   );
 };

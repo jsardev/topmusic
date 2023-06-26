@@ -1,10 +1,10 @@
-import AlbumList from "@/modules/album/ui/AlbumList";
+import Albums from "@/modules/album/ui/Albums";
 import Layout from "@/shared/ui/Layout";
 
 const FavoritesPage = () => {
   return (
     <Layout title="Favorites" withViewToolbar>
-      <AlbumList showOnlyFavorites />
+      <Albums showOnlyFavorites />
     </Layout>
   );
 };

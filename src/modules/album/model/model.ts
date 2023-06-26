@@ -8,6 +8,7 @@ export class Album {
   trackCount: number;
   price: string;
   category: string;
+  position?: number;
   releaseDate: string;
   isFavorite: boolean;
   addedToFavoritesAt?: number;
@@ -21,6 +22,7 @@ export class Album {
     trackCount,
     price,
     category,
+    position,
     releaseDate,
     isFavorite,
     addedToFavoritesAt,
@@ -33,6 +35,7 @@ export class Album {
     this.trackCount = trackCount;
     this.price = price;
     this.category = category;
+    this.position = position;
     this.releaseDate = releaseDate;
     this.isFavorite = isFavorite;
     this.addedToFavoritesAt = this.computeAddedToFavoritesAt(
@@ -42,7 +45,7 @@ export class Album {
     this.exclude = exclude;
   }
 
-  static fromRSSAlbumDTO = (dto: RSSAlbumDTO): Album => {
+  static fromRSSAlbumDTO = (dto: RSSAlbumDTO, position: number): Album => {
     return new Album({
       id: dto.id.attributes["im:id"],
       artist: dto["im:artist"].label,
@@ -52,6 +55,7 @@ export class Album {
       trackCount: Number(dto["im:itemCount"].label),
       price: dto["im:price"].label,
       category: dto.category.attributes.label,
+      position,
       releaseDate: dto["im:releaseDate"].label,
       isFavorite: false,
       exclude: false,
@@ -62,6 +66,7 @@ export class Album {
     return new Album({
       ...dto,
       isFavorite: true,
+      position: undefined,
     });
   };
 
@@ -93,6 +98,7 @@ type AlbumNonMethodKeys =
   | "trackCount"
   | "price"
   | "category"
+  | "position"
   | "releaseDate"
   | "isFavorite"
   | "addedToFavoritesAt"

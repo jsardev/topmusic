@@ -10,7 +10,9 @@ export const topAlbumsRepository: Repository<
 > = {
   getAll: async (filters) => {
     const topAlbumsResponseDTO = await albumsClient.getTopAlbums(filters);
-    return topAlbumsResponseDTO.feed.entry.map(Album.fromRSSAlbumDTO);
+    return topAlbumsResponseDTO.feed.entry.map((entry, index) =>
+      Album.fromRSSAlbumDTO(entry, index + 1)
+    );
   },
   saveAll: () => {
     throw new Error("not implemented");

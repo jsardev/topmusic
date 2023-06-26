@@ -40,10 +40,13 @@ describe("album model", () => {
   });
 
   it("should create Album instance from RSSAlbumDTO", () => {
-    const result = Album.fromRSSAlbumDTO(RSSAlbumDTOFixture);
+    const result = Album.fromRSSAlbumDTO(RSSAlbumDTOFixture, 5);
 
     expect(result).toBeInstanceOf(Album);
-    expect(result).toEqual(albumFixture);
+    expect(result).toEqual({
+      ...albumFixture,
+      position: 5,
+    });
   });
 
   it("should create Album instance from FavoriteAlbumDTO", () => {
