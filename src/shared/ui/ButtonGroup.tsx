@@ -65,7 +65,7 @@ const ButtonGroupItem = ({
       onClick={onClick}
     >
       <Icon name={iconName} className="size-16" />
-      <Text className="md:display-none" type="text/md/regular">
+      <Text className="md:hidden" type="text/md/regular">
         {children}
       </Text>
     </button>

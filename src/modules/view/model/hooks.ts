@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { filterState, viewState } from "./state";
-import { useMatch } from "react-router-dom";
+import { useLocation, useMatch } from "react-router-dom";
 
 export const useView = () => {
   const [view, setView] = useRecoilState(viewState);
@@ -12,7 +12,15 @@ export const useFilter = () => {
   return { filter, setFilter };
 };
 
-export const useIsFavoritesViewActive = () => {
-  const match = useMatch("/favorites");
-  return match !== null ? true : false;
+// TODO: Refactor to a cleaner solution
+export const useActiveRoutes = () => {
+  const location = useLocation();
+
+  console.log(location.pathname);
+
+  return {
+    home: location.pathname == "/",
+    favorites: location.pathname.includes("/favorites"),
+    details: location.pathname.includes("/details"),
+  };
 };

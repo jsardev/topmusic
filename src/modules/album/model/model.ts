@@ -3,6 +3,12 @@ import { FavoriteAlbumDTO, RSSAlbumDTO } from "../infrastructure";
 export class Album {
   id: string;
   artist: string;
+  name: string;
+  coverImageUrl: string;
+  trackCount: number;
+  price: string;
+  category: string;
+  releaseDate: string;
   isFavorite: boolean;
   addedToFavoritesAt?: number;
   exclude: boolean;
@@ -10,12 +16,24 @@ export class Album {
   constructor({
     id,
     artist,
+    name,
+    coverImageUrl,
+    trackCount,
+    price,
+    category,
+    releaseDate,
     isFavorite,
     addedToFavoritesAt,
     exclude,
   }: AlbumDTO) {
     this.id = id;
     this.artist = artist;
+    this.name = name;
+    this.coverImageUrl = coverImageUrl;
+    this.trackCount = trackCount;
+    this.price = price;
+    this.category = category;
+    this.releaseDate = releaseDate;
     this.isFavorite = isFavorite;
     this.addedToFavoritesAt = this.computeAddedToFavoritesAt(
       isFavorite,
@@ -28,6 +46,13 @@ export class Album {
     return new Album({
       id: dto.id.attributes["im:id"],
       artist: dto["im:artist"].label,
+      name: dto["im:name"].label,
+      // TODO: extract to a helper function that would be less error-prone
+      coverImageUrl: dto["im:image"][2].label,
+      trackCount: Number(dto["im:itemCount"].label),
+      price: dto["im:price"].label,
+      category: dto.category.attributes.label,
+      releaseDate: dto["im:releaseDate"].label,
       isFavorite: false,
       exclude: false,
     });
@@ -63,6 +88,12 @@ export class Album {
 type AlbumNonMethodKeys =
   | "id"
   | "artist"
+  | "name"
+  | "coverImageUrl"
+  | "trackCount"
+  | "price"
+  | "category"
+  | "releaseDate"
   | "isFavorite"
   | "addedToFavoritesAt"
   | "exclude";

@@ -10,6 +10,7 @@ const spacing = {
   16: "16px",
   24: "24px",
   32: "32px",
+  36: "36px",
   42: "42px",
   48: "48px",
   64: "64px",
@@ -22,7 +23,7 @@ export default defineConfig({
     presetWebFonts({
       provider: "google",
       fonts: {
-        sans: "Inter",
+        sans: "Inter:400,600,700",
       },
     }) as Preset<Theme>,
   ],

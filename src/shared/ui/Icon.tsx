@@ -1,6 +1,7 @@
 import cn from "classnames";
 
 const icons = {
+  heart: "i-lucide-heart",
   music: "i-lucide-music",
   loader: "i-lucide-loader2",
   "arrow-left": "i-lucide-arrow-left",

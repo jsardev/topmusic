@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import cn from "classnames";
 import HeaderLogo from "./HeaderLogo";
-import { useIsFavoritesViewActive } from "@/modules/view";
+import { useActiveRoutes } from "@/modules/view";
 import Icon from "./Icon";
 
 type HeaderProps = {
@@ -9,19 +9,20 @@ type HeaderProps = {
 };
 
 const Header = ({ className }: HeaderProps) => {
-  const isFavoritesView = useIsFavoritesViewActive();
+  const activeRoutes = useActiveRoutes();
 
   return (
-    <header className={cn("flex justify-between w-full", className)}>
-      <div className="flex gap-12">
-        {isFavoritesView ? (
+    <header className={cn("flex justify-center w-full relative", className)}>
+      <div className="flex gap-12 absolute left-0">
+        {!activeRoutes.home && (
           <Link to="/">
             <Icon
               name="arrow-left"
               className="size-24 md:size-32 color-gray300 hover:color-gray500 transition-colors"
             />
           </Link>
-        ) : (
+        )}
+        {!activeRoutes.favorites && (
           <Link to="/favorites">
             <Icon
               name="folder-heart"
@@ -31,7 +32,7 @@ const Header = ({ className }: HeaderProps) => {
         )}
       </div>
       <HeaderLogo />
-      <div>
+      <div className="absolute right-0">
         <a href="https://github.com/sarneeh/topmusic" target="_blank">
           <Icon
             name="brands-github"

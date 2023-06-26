@@ -20,7 +20,7 @@ export interface RSSAlbumDTO {
   >;
   "im:itemCount": iTunesRSSEntryLabelValue;
   "im:price": iTunesRSSEntryLabelValue;
-  "im:category": iTunesRSSEntryAttributesValue<{
+  category: iTunesRSSEntryAttributesValue<{
     label: string;
   }>;
   "im:releaseDate": iTunesRSSEntryLabelAndAttributesValue<{

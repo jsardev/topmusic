@@ -8,13 +8,14 @@ import LayoutBackgroundIcon from "./LayoutBackgroundIcon";
 
 type LayoutProps = {
   title: string;
+  withViewToolbar?: boolean;
   children: React.ReactNode;
 };
 
-const Layout = ({ title, children }: LayoutProps) => {
+const Layout = ({ title, withViewToolbar = false, children }: LayoutProps) => {
   return (
     <React.Suspense fallback={<LayoutLoading />}>
-      <div className="container flex flex-col justify-center items-center py-24 md:py-64">
+      <div className="container flex flex-col items-center py-24 md:py-64 h-screen">
         <LayoutBackgroundIcon />
         <Header className="mb-32 md:mb-64" />
         <div className="flex flex-col w-full gap-24 mb-32 md:mb-48">
@@ -24,10 +25,10 @@ const Layout = ({ title, children }: LayoutProps) => {
           >
             {title}
           </Text>
-          <div className="flex flex-col md:flex-row gap-12 md:gap-24">
+          {withViewToolbar && <div className="flex flex-col md:flex-row gap-12 md:gap-24">
             <Filter className="flex-1" />
             <ViewToggle className="w-full md:w-auto" />
-          </div>
+          </div>}
         </div>
         {children}
       </div>

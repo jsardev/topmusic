@@ -3,7 +3,7 @@ import Layout from "@/shared/ui/Layout";
 
 const HomePage = () => {
   return (
-    <Layout title="Top Albums">
+    <Layout title="Top Albums" withViewToolbar>
       <AlbumList />
     </Layout>
   );
