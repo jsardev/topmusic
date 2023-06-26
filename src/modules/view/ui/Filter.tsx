@@ -1,9 +1,13 @@
 import Input from "@/shared/ui/Input";
 import { useFilter } from "../model";
 
-const Filter = () => {
+type FilterProps = {
+  className?: string;
+};
+
+const Filter = ({ className }: FilterProps) => {
   const { filter, setFilter } = useFilter();
-  return <Input value={filter} onChange={setFilter} />;
+  return <Input className={className} value={filter} onChange={setFilter} />;
 };
 
 export default Filter;

@@ -14,9 +14,27 @@ export default defineConfig({
       },
     }) as Preset<Theme>,
   ],
+  rules: [
+    [
+      /^size-(\d+)$/,
+      ([, size]) => ({
+        width: `${size}px`,
+        height: `${size}px`,
+      }),
+    ],
+  ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: "24px",
+      },
+      maxWidth: {
+        md: "768px",
+      },
+    },
     breakpoints: {
-      md: '768px'
+      md: "768px",
     },
     colors: {
       primary: {
@@ -31,10 +49,11 @@ export default defineConfig({
       sm: ["0.889rem", "1.5rem"],
       md: ["1rem", "1.5rem"],
       lg: ["1.125em", "1.5rem"],
-      "sm/display": ["1.802rem", "1.25rem"],
-      "md/display": ["2.027rem", "1.25rem"],
-      "lg/display": ["2.887rem", "1.25rem"],
-      "xl/display": ["3.653rem", "1.25rem"],
+      "xs-display": ["1.424rem", "1.25rem"],
+      "sm-display": ["1.802rem", "1.25rem"],
+      "md-display": ["2.027rem", "1.25rem"],
+      "lg-display": ["2.887rem", "1.25rem"],
+      "xl-display": ["3.653rem", "1.25rem"],
     },
   },
   shortcuts: {
@@ -44,12 +63,13 @@ export default defineConfig({
     "text/md/bold": "text-md font-bold font-sans",
     "text/sm/regular": "text-sm font-normal font-sans",
     "text/sm/bold": "text-sm font-bold font-sans",
-    "display/sm/regular": "text-sm/display font-normal font-sans",
-    "display/sm/bold": "text-sm/display font-bold font-sans",
-    "display/md/regular": "text-md/display font-normal font-sans",
-    "display/lg/regular": "text-lg/display font-normal font-sans",
-    "display/xl/regular": "text-xl/display font-normal font-sans",
-    "display/xl/semibold": "text-xl/display font-semibold font-sans",
-    "display/xl/bold": "text-xl/display font-bold font-sans",
+    "display/xs/regular": "text-xs-display font-normal font-sans",
+    "display/sm/regular": "text-sm-display font-normal font-sans",
+    "display/sm/bold": "text-sm-display font-bold font-sans",
+    "display/md/regular": "text-md-display font-normal font-sans",
+    "display/lg/regular": "text-lg-display font-normal font-sans",
+    "display/xl/regular": "text-xl-display font-normal font-sans",
+    "display/xl/semibold": "text-xl-display font-semibold font-sans",
+    "display/xl/bold": "text-xl-display font-bold font-sans",
   },
 });

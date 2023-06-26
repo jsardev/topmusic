@@ -2,7 +2,11 @@ import cn from "classnames";
 
 import { useView, ViewType } from "../model";
 
-const ViewToggle = () => {
+type ViewToggleProps = {
+  className?: string;
+};
+
+const ViewToggle = ({ className }: ViewToggleProps) => {
   const { view, setView } = useView();
 
   const getButtonOnClick = (buttonViewType: ViewType) => () => {
@@ -14,15 +18,19 @@ const ViewToggle = () => {
   });
 
   return (
-    <div>
+    <div className={cn("flex", className)}>
       <button
-        className={cn({ ...getActiveViewButtonStyles(ViewType.LIST) })}
+        className={cn("flex-1", {
+          ...getActiveViewButtonStyles(ViewType.LIST),
+        })}
         onClick={getButtonOnClick(ViewType.LIST)}
       >
         List
       </button>
       <button
-        className={cn({ ...getActiveViewButtonStyles(ViewType.GRID) })}
+        className={cn("flex-1", {
+          ...getActiveViewButtonStyles(ViewType.GRID),
+        })}
         onClick={getButtonOnClick(ViewType.GRID)}
       >
         Grid

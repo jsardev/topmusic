@@ -16,6 +16,7 @@ export type TextType =
   | "text/md/bold"
   | "text/sm/regular"
   | "text/sm/bold"
+  | "display/xs/regular"
   | "display/sm/regular"
   | "display/sm/bold"
   | "display/md/regular"
