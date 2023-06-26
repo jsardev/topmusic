@@ -7,11 +7,9 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-const fallback = <LayoutLoading>Loading data...</LayoutLoading>;
-
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <React.Suspense fallback={fallback}>
+    <React.Suspense fallback={<LayoutLoading />}>
       <div className="w-screen flex flex-col justify-center items-center">
         <header className="flex">
           <Link to="/">Home</Link>
