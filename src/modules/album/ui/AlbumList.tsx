@@ -2,9 +2,9 @@ import List from "@/shared/ui/List";
 import { useTopAlbums } from "../model";
 import AlbumListRow from "./AlbumListRow";
 
-interface AlbumListProps {
+type AlbumListProps = {
   showOnlyFavorites?: boolean;
-}
+};
 
 const AlbumList = ({ showOnlyFavorites = false }: AlbumListProps) => {
   const { albums } = useTopAlbums({ showOnlyFavorites });
