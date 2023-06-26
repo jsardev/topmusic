@@ -10,6 +10,7 @@ const spacing = {
   16: "16px",
   24: "24px",
   32: "32px",
+  42: "42px",
   48: "48px",
   64: "64px",
 };
@@ -48,10 +49,13 @@ export default defineConfig({
       md: "768px",
     },
     spacing,
-    height: spacing,
     width: spacing,
+    height: spacing,
+    maxWidth: spacing,
+    maxHeight: spacing,
     colors: {
       primary: {
+        500: "#CE7879",
         700: "#BC4749",
       },
     },

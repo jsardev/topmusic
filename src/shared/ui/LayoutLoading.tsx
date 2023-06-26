@@ -11,7 +11,7 @@ const LayoutLoading = () => {
         <HeaderLogo />
         <Icon name="loader" className="color-primary700 size-48 animate-spin" />
         <Text type="text/sm/regular" className="color-gray400 text-center">
-          Loading...
+          Loading
         </Text>
       </div>
     </div>

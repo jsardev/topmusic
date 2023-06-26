@@ -24,7 +24,7 @@ const Layout = ({ title, children }: LayoutProps) => {
           >
             {title}
           </Text>
-          <div className="flex flex-col md:flex-row gap-24">
+          <div className="flex flex-col md:flex-row gap-12 md:gap-24">
             <Filter className="flex-1" />
             <ViewToggle className="w-full md:w-auto" />
           </div>

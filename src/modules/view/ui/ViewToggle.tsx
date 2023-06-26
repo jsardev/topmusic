@@ -1,6 +1,7 @@
 import cn from "classnames";
 
 import { useView, ViewType } from "../model";
+import ButtonGroup from "@/shared/ui/ButtonGroup";
 
 type ViewToggleProps = {
   className?: string;
@@ -13,29 +14,23 @@ const ViewToggle = ({ className }: ViewToggleProps) => {
     setView(buttonViewType);
   };
 
-  const getActiveViewButtonStyles = (buttonViewType: ViewType) => ({
-    "bg-red": view === buttonViewType,
-  });
-
   return (
-    <div className={cn("flex", className)}>
-      <button
-        className={cn("flex-1", {
-          ...getActiveViewButtonStyles(ViewType.LIST),
-        })}
+    <ButtonGroup>
+      <ButtonGroup.Item
+        isActive={view === ViewType.LIST}
+        iconName="layout-list"
         onClick={getButtonOnClick(ViewType.LIST)}
       >
         List
-      </button>
-      <button
-        className={cn("flex-1", {
-          ...getActiveViewButtonStyles(ViewType.GRID),
-        })}
+      </ButtonGroup.Item>
+      <ButtonGroup.Item
+        isActive={view === ViewType.GRID}
+        iconName="layout-grid"
         onClick={getButtonOnClick(ViewType.GRID)}
       >
         Grid
-      </button>
-    </div>
+      </ButtonGroup.Item>
+    </ButtonGroup>
   );
 };
 
