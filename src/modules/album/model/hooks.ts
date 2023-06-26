@@ -6,7 +6,6 @@ import {
   albumsQuery,
   albumsState,
   filteredAlbumsQuery,
-  albumsFilterState,
 } from "./state";
 
 const DEFAULT_TOP_ALBUMS_LIMIT = 100;
@@ -34,15 +33,6 @@ export const useTopAlbums = ({
 
   return {
     albums: filteredAlbums,
-  };
-};
-
-export const useAlbumsFilter = () => {
-  const [albumsFilter, setAlbumsFilter] = useRecoilState(albumsFilterState);
-
-  return {
-    albumsFilter,
-    setAlbumsFilter,
   };
 };
 

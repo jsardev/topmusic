@@ -8,6 +8,7 @@ import {
   favoriteAlbumsLocalForageSyncEffect,
 } from "../infrastructure";
 import { mergeAlbumsWithFavoriteAlbums, searchAlbums } from "./utils";
+import { filterState } from "@/modules/view";
 
 export const albumsState = atom<Album[]>({
   key: "albumsState",
@@ -34,11 +35,6 @@ export const favoriteAlbumsQuery = selector({
   },
 });
 
-export const albumsFilterState = atom<string>({
-  key: "albumsFilterState",
-  default: "",
-});
-
 interface FilteredAlbumsQueryOptions {
   showOnlyFavorites: boolean;
 }
@@ -49,12 +45,12 @@ export const filteredAlbumsQuery = selectorFamily({
     ({ showOnlyFavorites }: Readonly<FilteredAlbumsQueryOptions>) =>
     ({ get }) => {
       const albums = get(albumsState);
-      const albumsFilter = get(albumsFilterState);
+      const filter = get(filterState);
       const favoriteAlbums = get(favoriteAlbumsQuery);
       const albumsToFilter = showOnlyFavorites ? favoriteAlbums : albums;
 
-      if (albumsFilter) {
-        return searchAlbums(albumsToFilter, albumsFilter);
+      if (filter) {
+        return searchAlbums(albumsToFilter, filter);
       }
 
       return albumsToFilter;

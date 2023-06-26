@@ -1,11 +1,11 @@
-import AlbumFilter from "@/modules/album/ui/AlbumFilter";
+import Filter from "@/modules/view/ui/Filter";
 import AlbumList from "@/modules/album/ui/AlbumList";
 import Layout from "@/shared/ui/Layout";
 
 const HomePage = () => {
   return (
     <Layout>
-      <AlbumFilter />
+      <Filter />
       <AlbumList />
     </Layout>
   );
