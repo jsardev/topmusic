@@ -17,8 +17,10 @@ export class Album {
     this.id = id;
     this.artist = artist;
     this.isFavorite = isFavorite;
-    this.addedToFavoritesAt =
-      addedToFavoritesAt ?? this.computeAddedToFavoritesAt(isFavorite);
+    this.addedToFavoritesAt = this.computeAddedToFavoritesAt(
+      isFavorite,
+      addedToFavoritesAt
+    );
     this.exclude = exclude;
   }
 
@@ -40,16 +42,21 @@ export class Album {
 
   setIsFavorite(isFavorite: boolean, addedToFavoritesAt?: number) {
     this.isFavorite = isFavorite;
-    this.addedToFavoritesAt =
-      addedToFavoritesAt ?? this.computeAddedToFavoritesAt(isFavorite);
+    this.addedToFavoritesAt = this.computeAddedToFavoritesAt(
+      isFavorite,
+      addedToFavoritesAt
+    );
   }
 
   setExclude(exclude: boolean) {
     this.exclude = exclude;
   }
 
-  private computeAddedToFavoritesAt(isFavorite: boolean) {
-    return isFavorite === true ? Date.now() : undefined;
+  private computeAddedToFavoritesAt(
+    isFavorite: boolean,
+    addedToFavoritesAt?: number
+  ) {
+    return addedToFavoritesAt ?? (isFavorite === true ? Date.now() : undefined);
   }
 }
 

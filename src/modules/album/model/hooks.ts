@@ -2,11 +2,7 @@ import { replaceItemAtIndex } from "@/shared/utils/array";
 import { useEffect } from "react";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import { Album } from "../model";
-import {
-  albumsQuery,
-  albumsState,
-  filteredAlbumsQuery,
-} from "./state";
+import { albumsQuery, albumsState, filteredAlbumsQuery } from "./state";
 
 const DEFAULT_TOP_ALBUMS_LIMIT = 100;
 

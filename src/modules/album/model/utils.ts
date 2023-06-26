@@ -1,5 +1,5 @@
 import Fuse from "fuse.js";
-import { Album } from "../model";
+import { Album, FavoriteAlbum } from "../model";
 
 const albumFuse = new Fuse<Album>([], {
   keys: ["artist"],
@@ -12,6 +12,11 @@ export const searchAlbums = (albums: Album[], query: string): Album[] => {
   const searchResult = albumFuse.search(query);
   return Array.from(new Set(searchResult.map(({ item }) => item)));
 };
+
+export const filterAndSortFavoriteAlbums = (albums: Album[]) =>
+  albums
+    .filter((album): album is FavoriteAlbum => album.isFavorite)
+    .sort((a, b) => b.addedToFavoritesAt - a.addedToFavoritesAt);
 
 export const mergeAlbumsWithFavoriteAlbums = (
   albums: Album[],

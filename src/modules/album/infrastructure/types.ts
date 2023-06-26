@@ -23,11 +23,9 @@ export interface RSSAlbumDTO {
   "im:category": iTunesRSSEntryAttributesValue<{
     label: string;
   }>;
-  "im:releaseDate": Array<
-    iTunesRSSEntryLabelAndAttributesValue<{
-      label: string;
-    }>
-  >;
+  "im:releaseDate": iTunesRSSEntryLabelAndAttributesValue<{
+    label: string;
+  }>;
 }
 
 export interface RSSTopAlbumsResponseDTO {

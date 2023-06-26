@@ -7,7 +7,11 @@ import {
   TopAlbumsRepositoryFilters,
   favoriteAlbumsLocalForageSyncEffect,
 } from "../infrastructure";
-import { mergeAlbumsWithFavoriteAlbums, searchAlbums } from "./utils";
+import {
+  filterAndSortFavoriteAlbums,
+  mergeAlbumsWithFavoriteAlbums,
+  searchAlbums,
+} from "./utils";
 import { filterState } from "@/modules/view";
 
 export const albumsState = atom<Album[]>({
@@ -29,9 +33,7 @@ export const favoriteAlbumsQuery = selector({
   key: "favoriteAlbumsState",
   get: ({ get }) => {
     const albums = get(albumsState);
-    return albums
-      .filter((album): album is FavoriteAlbum => album.isFavorite)
-      .sort((a, b) => b.addedToFavoritesAt - a.addedToFavoritesAt);
+    return filterAndSortFavoriteAlbums(albums);
   },
 });
 
