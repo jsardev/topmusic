@@ -11,6 +11,7 @@
     "format": "prettier --write '**/*.{cjs,ts,tsx}'"
   },
   "dependencies": {
+    "classnames": "^2.3.2",
     "fuse.js": "^6.6.2",
     "ky": "^0.33.3",
     "localforage": "^1.10.0",
