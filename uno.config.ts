@@ -3,6 +3,17 @@ import presetIcons from "@unocss/preset-icons";
 import presetWind, { Theme } from "@unocss/preset-wind";
 import presetWebFonts from "@unocss/preset-web-fonts";
 
+const spacing = {
+  4: "4px",
+  8: "8px",
+  12: "12px",
+  16: "16px",
+  24: "24px",
+  32: "32px",
+  48: "48px",
+  64: "64px",
+};
+
 export default defineConfig({
   presets: [
     presetWind(),
@@ -36,6 +47,9 @@ export default defineConfig({
     breakpoints: {
       md: "768px",
     },
+    spacing,
+    height: spacing,
+    width: spacing,
     colors: {
       primary: {
         700: "#BC4749",

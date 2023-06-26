@@ -7,7 +7,14 @@ type FilterProps = {
 
 const Filter = ({ className }: FilterProps) => {
   const { filter, setFilter } = useFilter();
-  return <Input className={className} value={filter} onChange={setFilter} />;
+  return (
+    <Input
+      className={className}
+      value={filter}
+      placeholder="Type artist or album name..."
+      onChange={setFilter}
+    />
+  );
 };
 
 export default Filter;

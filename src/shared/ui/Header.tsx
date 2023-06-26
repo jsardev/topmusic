@@ -13,7 +13,7 @@ const Header = ({ className }: HeaderProps) => {
 
   return (
     <header className={cn("flex justify-between w-full", className)}>
-      <div className="flex gap-4">
+      <div className="flex gap-12">
         {isFavoritesView ? (
           <Link to="/">
             <Icon
