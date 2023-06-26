@@ -5,21 +5,25 @@ import { useView, ViewType } from "../model";
 const ViewToggle = () => {
   const { view, setView } = useView();
 
-  const onButtonClick = (view: ViewType) => {
-    setView(view);
+  const getButtonOnClick = (buttonViewType: ViewType) => () => {
+    setView(buttonViewType);
   };
+
+  const getActiveViewButtonStyles = (buttonViewType: ViewType) => ({
+    "bg-red": view === buttonViewType,
+  });
 
   return (
     <div>
       <button
-        className={cn({ "bg-red": view === ViewType.LIST })}
-        onClick={() => onButtonClick(ViewType.LIST)}
+        className={cn({ ...getActiveViewButtonStyles(ViewType.LIST) })}
+        onClick={getButtonOnClick(ViewType.LIST)}
       >
         List
       </button>
       <button
-        className={cn({ "bg-red": view === ViewType.GRID })}
-        onClick={() => onButtonClick(ViewType.GRID)}
+        className={cn({ ...getActiveViewButtonStyles(ViewType.GRID) })}
+        onClick={getButtonOnClick(ViewType.GRID)}
       >
         Grid
       </button>
