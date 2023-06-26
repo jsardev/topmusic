@@ -15,7 +15,7 @@ type LayoutProps = {
 const Layout = ({ title, withViewToolbar = false, children }: LayoutProps) => {
   return (
     <React.Suspense fallback={<LayoutLoading />}>
-      <div className="container flex flex-col items-center py-24 md:py-64 h-screen">
+      <div className="container flex flex-col items-center py-24 md:py-64">
         <LayoutBackgroundIcon />
         <Header className="mb-32 md:mb-64" />
         <div className="flex flex-col w-full gap-24 mb-32 md:mb-48">
@@ -25,10 +25,12 @@ const Layout = ({ title, withViewToolbar = false, children }: LayoutProps) => {
           >
             {title}
           </Text>
-          {withViewToolbar && <div className="flex flex-col md:flex-row gap-12 md:gap-24">
-            <Filter className="flex-1" />
-            <ViewToggle className="w-full md:w-auto" />
-          </div>}
+          {withViewToolbar && (
+            <div className="flex flex-col md:flex-row gap-12 md:gap-24">
+              <Filter className="flex-1" />
+              <ViewToggle className="w-full md:w-auto" />
+            </div>
+          )}
         </div>
         {children}
       </div>

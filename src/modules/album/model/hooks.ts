@@ -2,34 +2,55 @@ import { replaceItemAtIndex } from "@/shared/utils/array";
 import { useEffect } from "react";
 import { useRecoilValue, useRecoilState, useSetRecoilState } from "recoil";
 import { Album } from "../model";
-import { albumsQuery, albumsState, filteredAlbumsQuery } from "./state";
+import {
+  albumByIdQuery,
+  albumsQuery,
+  albumsState,
+  filteredAlbumsQuery,
+} from "./state";
 
 const DEFAULT_TOP_ALBUMS_LIMIT = 100;
 
-interface UseTopAlbumsOptions {
+interface UseInitializeAlbumsOptions {
   limit?: number;
-  showOnlyFavorites?: boolean;
 }
 
-export const useTopAlbums = ({
+const useInitializeAlbums = ({
   limit = DEFAULT_TOP_ALBUMS_LIMIT,
-  showOnlyFavorites = false,
-}: UseTopAlbumsOptions) => {
+}: UseInitializeAlbumsOptions = {}) => {
   const albumsQueryValue = useRecoilValue(albumsQuery({ limit }));
   const [albums, setAlbums] = useRecoilState(albumsState);
-  const filteredAlbums = useRecoilValue(
-    filteredAlbumsQuery({ showOnlyFavorites })
-  );
 
   useEffect(() => {
     if (!albums.length) {
       setAlbums(albumsQueryValue);
     }
   }, [albums.length, albumsQueryValue, setAlbums]);
+};
+
+type UseTopAlbumsOptions = UseInitializeAlbumsOptions & {
+  showOnlyFavorites?: boolean;
+};
+
+export const useTopAlbums = ({
+  limit,
+  showOnlyFavorites = false,
+}: UseTopAlbumsOptions = {}) => {
+  useInitializeAlbums({ limit });
+
+  const filteredAlbums = useRecoilValue(
+    filteredAlbumsQuery({ showOnlyFavorites })
+  );
 
   return {
     albums: filteredAlbums,
   };
+};
+
+export const useAlbumById = (id: string): Album | undefined => {
+  useInitializeAlbums();
+
+  return useRecoilValue(albumByIdQuery(id));
 };
 
 export const useToggleAlbumIsFavorite = (album: Album) => {

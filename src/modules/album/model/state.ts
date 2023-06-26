@@ -29,6 +29,16 @@ export const albumsQuery = selectorFamily({
   },
 });
 
+export const albumByIdQuery = selectorFamily({
+  key: "albumByIdQuery",
+  get:
+    (id: string) =>
+    ({ get }) => {
+      const albums = get(albumsState);
+      return albums.find((album) => album.id === id);
+    },
+});
+
 export const favoriteAlbumsQuery = selector({
   key: "favoriteAlbumsState",
   get: ({ get }) => {

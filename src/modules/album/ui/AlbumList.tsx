@@ -7,7 +7,7 @@ const AlbumList = ({ showOnlyFavorites = false }: AlbumsProps) => {
   const { albums } = useTopAlbums({ showOnlyFavorites });
 
   return (
-    <List className="flex flex-col gap-32 overflow-y-scroll overflow-x-hidden md:px-156px w-full md:w-auto">
+    <List className="flex flex-col gap-32 w-full">
       {albums.map((album) => (
         <AlbumListItem
           key={album.id}
