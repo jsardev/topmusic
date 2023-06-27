@@ -2,7 +2,7 @@ import Fuse from "fuse.js";
 import { Album, FavoriteAlbum } from "../model";
 
 const albumFuse = new Fuse<Album>([], {
-  keys: ["artist"],
+  keys: ["name", "artist"],
   threshold: 0.0,
   ignoreLocation: true,
 });

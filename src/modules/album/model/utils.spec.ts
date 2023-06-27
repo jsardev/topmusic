@@ -60,6 +60,24 @@ describe("album model utilities", () => {
       expect(result).toHaveLength(1);
       expect(result).toEqual([album1]);
     });
+
+    it("should search albums by name", () => {
+      const album1 = new Album({
+        ...albumFixture,
+        artist: "Radiohead",
+        name: "Pablo Honey",
+      });
+      const album2 = new Album({
+        ...albumFixture,
+        artist: "Miley Cyrus",
+        name: "Plastic Hearts",
+      });
+
+      const result = searchAlbums([album1, album2], "hearts");
+
+      expect(result).toHaveLength(1);
+      expect(result).toEqual([album2]);
+    });
   });
 
   describe("mergeAlbumsWithFavoriteAlbums", () => {
