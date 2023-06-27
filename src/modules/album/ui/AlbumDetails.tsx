@@ -15,9 +15,9 @@ const AlbumDetails = ({ id }: AlbumDetailsProps) => {
   }
 
   return (
-    <div className="flex color-gray-700 gap-32 w-full">
+    <div className="flex flex-col md:flex-row color-gray-700 gap-12 md:gap-32 w-full">
       <div className="flex flex-col gap-12 items-start">
-        <img src={album.coverImageUrl} className="w-320px" />
+        <img src={album.coverImageUrl} className="w-full md:w-320px rounded-lg" />
         <AlbumFavoriteButton album={album} />
       </div>
       <div className="flex flex-col gap-12 items-start">

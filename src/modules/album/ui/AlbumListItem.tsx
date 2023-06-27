@@ -21,7 +21,7 @@ const AlbumListItem = ({ album, showPosition = true }: AlbumListItemProps) => {
           />
           <div className="flex flex-col md:flex-row flex-1 md:justify-between overflow-hidden gap-12 md:gap-48">
             <div className="flex flex-col gap-4 overflow-hidden">
-              <Text type="text/lg/bold" className="color-gray-700">
+              <Text type="text/lg/bold" className="color-gray-700 truncate">
                 {album.artist}
               </Text>
               <Text type="text/md/regular" className="color-gray-500 truncate">
