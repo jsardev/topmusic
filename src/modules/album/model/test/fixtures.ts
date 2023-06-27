@@ -8,7 +8,7 @@ export const albumFixture: Album = new Album({
   trackCount: 18,
   price: "9.99$",
   category: "Alternative Rock",
-  releaseDate: "2023-06-23T00:00:00-07:00",
+  releaseDate: "June 23, 2023",
   isFavorite: false,
   addedToFavoritesAt: undefined,
   exclude: false,

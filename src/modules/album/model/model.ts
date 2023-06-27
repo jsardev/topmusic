@@ -56,7 +56,7 @@ export class Album {
       price: dto["im:price"].label,
       category: dto.category.attributes.label,
       position,
-      releaseDate: dto["im:releaseDate"].label,
+      releaseDate: dto["im:releaseDate"].attributes.label,
       isFavorite: false,
       exclude: false,
     });
