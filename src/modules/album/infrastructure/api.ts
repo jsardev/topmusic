@@ -1,8 +1,5 @@
 import { iTunesRSSClient } from "@/shared/infrastructure/api";
-import {
-  RSSTopAlbumsResponseDTO,
-  TopAlbumsRepositoryFilters,
-} from "./types";
+import { RSSTopAlbumsResponseDTO, TopAlbumsRepositoryFilters } from "./types";
 
 export const albumsClient = {
   getTopAlbums: ({ limit }: TopAlbumsRepositoryFilters) =>
@@ -10,5 +7,3 @@ export const albumsClient = {
       .get(`topalbums/limit=${limit}/json`)
       .json<RSSTopAlbumsResponseDTO>(),
 };
-
-

@@ -11,7 +11,7 @@ const AlbumDetails = ({ id }: AlbumDetailsProps) => {
   const album = useAlbumById(id ?? "");
 
   if (!album) {
-    return <Text type="text/md/regular">No album data found.</Text>
+    return <Text type="text/md/regular">No album data found.</Text>;
   }
 
   return (

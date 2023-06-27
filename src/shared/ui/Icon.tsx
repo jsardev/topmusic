@@ -11,7 +11,7 @@ const icons = {
   "brands-github": "i-fa6-brands:github",
 };
 
-export type IconName = keyof typeof icons
+export type IconName = keyof typeof icons;
 
 type IconProps = {
   name: IconName;

@@ -9,7 +9,10 @@ type AlbumFavoriteButtonProps = {
   className?: string;
 };
 
-const AlbumFavoriteButton = ({ album, className }: AlbumFavoriteButtonProps) => {
+const AlbumFavoriteButton = ({
+  album,
+  className,
+}: AlbumFavoriteButtonProps) => {
   const toggleAlbumIsFavorite = useToggleAlbumIsFavorite(album);
   return (
     <button className={className} onClick={toggleAlbumIsFavorite}>

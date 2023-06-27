@@ -1,5 +1,5 @@
 import React from "react";
-import cn from 'classnames'
+import cn from "classnames";
 
 export enum TextTag {
   DIV = "div",
@@ -28,7 +28,7 @@ export type TextType =
 type TextProps = {
   tag?: TextTag;
   type?: TextType;
-  className?: string,
+  className?: string;
   children: React.ReactNode;
 };
 
