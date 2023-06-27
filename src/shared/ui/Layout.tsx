@@ -28,7 +28,7 @@ const Layout = ({ title, withViewToolbar = false, children }: LayoutProps) => {
           {withViewToolbar && (
             <div className="flex flex-col md:flex-row gap-12 md:gap-24">
               <Filter className="flex-1" />
-              <ViewToggle className="w-full md:w-auto" />
+              <ViewToggle />
             </div>
           )}
         </div>

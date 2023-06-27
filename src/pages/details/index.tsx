@@ -1,7 +1,5 @@
-import { useAlbumById } from "@/modules/album/model";
 import AlbumDetails from "@/modules/album/ui/AlbumDetails";
 import Layout from "@/shared/ui/Layout";
-import Text from "@/shared/ui/Text";
 import { useParams } from "react-router-dom";
 
 const DetailsPage = () => {

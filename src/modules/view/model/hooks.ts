@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import { filterState, viewState } from "./state";
-import { useLocation, useMatch } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export const useView = () => {
   const [view, setView] = useRecoilState(viewState);

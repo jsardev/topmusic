@@ -1,13 +1,7 @@
-import cn from "classnames";
-
 import { useView, ViewType } from "../model";
 import ButtonGroup from "@/shared/ui/ButtonGroup";
 
-type ViewToggleProps = {
-  className?: string;
-};
-
-const ViewToggle = ({ className }: ViewToggleProps) => {
+const ViewToggle = () => {
   const { view, setView } = useView();
 
   const getButtonOnClick = (buttonViewType: ViewType) => () => {

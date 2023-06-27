@@ -1,6 +1,6 @@
 import { atom, selector, selectorFamily } from "recoil";
 
-import { Album, FavoriteAlbum } from "../model";
+import { Album } from "../model";
 import {
   favoriteAlbumsRepository,
   topAlbumsRepository,
