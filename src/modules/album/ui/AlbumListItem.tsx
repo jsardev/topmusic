@@ -12,12 +12,12 @@ type AlbumListItemProps = {
 
 const AlbumListItem = ({ album, showPosition = true }: AlbumListItemProps) => {
   return (
-    <ListRow className="flex items-center relative">
+    <ListRow className="group flex items-center relative">
       <Link to={`/details/${album.id}`} className="w-full md:w-720px">
         <div className="flex flex-col md:flex-row md:items-center md:rounded-lg gap-12 bg-white md:drop-shadow-sm hover:drop-shadow overflow-hidden md:pr-24 md:max-h-80 transition">
           <img
             src={album.coverImageUrl}
-            className="w-full md:w-auto max-h-300px md:max-h-80px object-cover object-top rounded-lg brightness-50"
+            className="w-full md:w-auto max-h-300px md:max-h-80px object-cover object-top rounded-lg brightness-50 md:brightness-100"
           />
           <div className="flex flex-col md:flex-row flex-1 md:justify-between overflow-hidden gap-12 md:gap-48">
             <div className="flex flex-col gap-4 overflow-hidden">
@@ -48,7 +48,7 @@ const AlbumListItem = ({ album, showPosition = true }: AlbumListItemProps) => {
       {showPosition && (
         <Text
           type="display/xl/semibold"
-          className="absolute leading-none left-12 top-12 md:w-150px md:-left-198px color-gray-100 text-right opacity-50 md:opacity-100"
+          className="absolute leading-none left-12 top-12 md:w-150px md:-left-198px color-gray-100 text-right opacity-50 md:opacity-100 group-hover:color-gray-300 transition-colors"
         >
           {album.position}.
         </Text>
