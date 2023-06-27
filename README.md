@@ -19,7 +19,13 @@ pnpm dev
 pnpm test
 ```
 
-## Technologies
+## Design
+
+I took some time to create a full design and mockup of the application. I found that starting with Figma results in better end products as you spend more time thinking about and focusing on good design and user experience. It's also a lot easier later on to work on the actual implementation having mockups and design tokens ready to use.
+
+[Figma](https://www.figma.com/file/V77tBuUbl6X0qmlaNUboov/wizcode%2Frecruitment-task?type=design&node-id=0%3A1&mode=design&t=rakHT4majZ9Y8WtI-1)
+
+## Technology
 
 Following libraries and technologies were used in this project:
 
