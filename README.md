@@ -63,6 +63,10 @@ There are a lot of places where unit tests are lacking - mostly in some of the c
 
 I wanted to create end-to-end tests using [Cypress](https://www.cypress.io/) but didn't have enough time.
 
+### SEO / Semantic HTML
+
+To be honest, when time got short I started to spam `div`'s wherever I could. There are certainly some places for improvement.
+
 ### UI / UX
 
 There are a few problems and places which could be improved:
@@ -72,8 +76,8 @@ There are a few problems and places which could be improved:
 
 ### Continuous integration / Continuous deployment
 
-I wanted to create some basic build/test/lint/typecheck GitHub Actions that could check stuff every commit without the need to do it locally. Again - not enough time.
+I wanted to create some basic build/test/lint/typecheck GitHub Actions that could check stuff every commit without the need to do it locally.
 
 ### Developer tooling
 
-There's only some simple linting and an autoformatter. It would be great to add some precommit hooks to automate things out.
+There's only some simple linting and an autoformatter. It would be great to add some precommit hooks to automate things out and some additional eslint rules e.g. for cleaning up imports (and creating module boundaries).
