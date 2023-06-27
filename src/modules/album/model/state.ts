@@ -29,6 +29,14 @@ export const albumsQuery = selectorFamily({
   },
 });
 
+export const topAlbumsQuery = selector({
+  key: "topAlbumsQuery",
+  get: ({ get }) => {
+    const albums = get(albumsState);
+    return albums.filter((album) => !album.exclude);
+  },
+});
+
 export const albumByIdQuery = selectorFamily({
   key: "albumByIdQuery",
   get:
@@ -56,7 +64,7 @@ export const filteredAlbumsQuery = selectorFamily({
   get:
     ({ showOnlyFavorites }: Readonly<FilteredAlbumsQueryOptions>) =>
     ({ get }) => {
-      const albums = get(albumsState);
+      const albums = get(topAlbumsQuery);
       const filter = get(filterState);
       const favoriteAlbums = get(favoriteAlbumsQuery);
       const albumsToFilter = showOnlyFavorites ? favoriteAlbums : albums;
