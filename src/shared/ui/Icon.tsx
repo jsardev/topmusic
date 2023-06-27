@@ -8,6 +8,7 @@ const icons = {
   "folder-heart": "i-lucide:folder-heart",
   "layout-list": "i-lucide:layout-list",
   "layout-grid": "i-lucide:layout-grid",
+  "external-link": "i-lucide:external-link",
   "brands-github": "i-fa6-brands:github",
 };
 

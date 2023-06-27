@@ -4,7 +4,8 @@ export const albumFixture: Album = new Album({
   id: "id",
   name: "Pablo Honey",
   artist: "Radiohead",
-  coverImageUrl: "https://some.image.170",
+  url: "https://album.url",
+  coverImageUrl: "https://image.170.url",
   trackCount: 18,
   price: "9.99$",
   category: "Alternative Rock",
@@ -28,19 +29,19 @@ export const RSSAlbumDTOFixture = {
   },
   "im:image": [
     {
-      label: "https://some.image.50",
+      label: "https://image.50.url",
       attributes: {
         height: "50",
       },
     },
     {
-      label: "https://some.image.100",
+      label: "https://image.100.url",
       attributes: {
         height: "100",
       },
     },
     {
-      label: "https://some.image.170",
+      label: "https://image.170.url",
       attributes: {
         height: "170",
       },
@@ -61,6 +62,13 @@ export const RSSAlbumDTOFixture = {
     label: "2023-06-23T00:00:00-07:00",
     attributes: {
       label: "June 23, 2023",
+    },
+  },
+  link: {
+    attributes: {
+      rel: "alternate",
+      type: "text/html",
+      href: "https://album.url",
     },
   },
 };

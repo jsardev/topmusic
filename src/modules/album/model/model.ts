@@ -4,6 +4,7 @@ export class Album {
   id: string;
   artist: string;
   name: string;
+  url: string;
   coverImageUrl: string;
   trackCount: number;
   price: string;
@@ -18,6 +19,7 @@ export class Album {
     id,
     artist,
     name,
+    url,
     coverImageUrl,
     trackCount,
     price,
@@ -31,6 +33,7 @@ export class Album {
     this.id = id;
     this.artist = artist;
     this.name = name;
+    this.url = url;
     this.coverImageUrl = coverImageUrl;
     this.trackCount = trackCount;
     this.price = price;
@@ -50,6 +53,7 @@ export class Album {
       id: dto.id.attributes["im:id"],
       artist: dto["im:artist"].label,
       name: dto["im:name"].label,
+      url: dto.link.attributes.href,
       // TODO: extract to a helper function that would be less error-prone
       coverImageUrl: dto["im:image"][2].label,
       trackCount: Number(dto["im:itemCount"].label),
@@ -94,6 +98,7 @@ type AlbumNonMethodKeys =
   | "id"
   | "artist"
   | "name"
+  | "url"
   | "coverImageUrl"
   | "trackCount"
   | "price"
