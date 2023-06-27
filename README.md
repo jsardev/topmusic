@@ -2,6 +2,8 @@
 
 A showcase application built with React and it's ecosystem. Powered by a simple [RSS iTunes API](https://itunes.apple.com/us/rss/topalbums/limit=100/json).
 
+[Live demo](https://topmusic-sarneeh.vercel.app/)
+
 ## How to use
 
 ### Run in development mode
@@ -70,6 +72,7 @@ To be honest, when time got short I started to spam `div`'s wherever I could. Th
 ### UI / UX
 
 There are a few problems and places which could be improved:
+
 - accessibility
 - keyboard navigation
 - layout shifts (mostly when on scroll show/hide)
