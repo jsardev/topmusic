@@ -1,4 +1,4 @@
-# topmusic
+![topmusic](docs/assets/logo.jpg)
 
 A showcase application built with React and it's ecosystem. Powered by a simple [RSS iTunes API](https://itunes.apple.com/us/rss/topalbums/limit=100/json).
 
