@@ -6,6 +6,7 @@ import Routing from "@/pages";
 
 import "virtual:uno.css";
 import "@unocss/reset/tailwind.css";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <RecoilRoot>
