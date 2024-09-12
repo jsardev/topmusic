@@ -24,7 +24,10 @@ const AlbumDetails = ({ id }: AlbumDetailsProps) => {
         />
         <div className="flex gap-12">
           <a href={album.url} target="_blank">
-            <Icon name="external-link" className="size-24 color-gray-300 hover:color-gray-500 transition-colors" />
+            <Icon
+              name="external-link"
+              className="size-24 color-gray-300 hover:color-gray-500 transition-colors"
+            />
           </a>
           <AlbumFavoriteButton album={album} />
         </div>
